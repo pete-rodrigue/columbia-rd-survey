@@ -996,7 +996,9 @@ responses from people going into So’s Your Mom with the responses from
 the business people in the shop?</p>
 <p>Below are the raw responses. There’s a bit of an odd data hiccup in
 that one of the staff estimated that 80% of customers walk, but didn’t
-provide a share for anything except walking.</p>
+provide a share for anything except walking. If you just include the one
+complete response, the shopkeeper overestimated both walking and
+driving.</p>
 <pre class="r"><code>make_modes_and_perceptions_graph(psd[psd$date ==&#39;July 14 2024&#39;,], 
                                  skd[skd$store == &quot;Sos your mom&quot; , ], font_size=12, main_graph = FALSE, 
                                  title=&quot;Results using only Jul 14 shopper data &amp; responses from So&#39;s Your Mom staff&quot;)</code></pre>
@@ -1019,12 +1021,12 @@ provide a share for anything except walking.</p>
 ##  9 &quot;Mode share estimate among\nshoppers that arrived by transit\n(n=2)&quot;         walk              50           50  
 ## 10 &quot;Mode share estimate among\nshoppers that arrived by transit\n(n=2)&quot;         car               30           50  
 ## # ℹ 14 more rows</code></pre>
-<p>If we just take that 20% that was unspecified and distribute it
-equally among the other options (biking/scootering, driving, and
-transit), we see results that are similar-ish to the main results. The
-shopkeepers actually over-estimate walking, but, like the other
-shopkeepers on average, they over-estimate car-use while underestimating
-biking, scootering, and transit-use.</p>
+<p>If we just take that 20% that was unspecified in the 2nd shopkeeper’s
+response and distribute it equally among the other options
+(biking/scootering, driving, and transit), we see results that are
+similar-ish to the main results. The shopkeepers actually over-estimate
+walking, but, like the other shopkeepers on average, they over-estimate
+car-use while underestimating biking, scootering, and transit-use.</p>
 <pre class="r"><code>make_modes_and_perceptions_graph(psd[psd$date ==&#39;July 14 2024&#39;,], 
                                  skd[skd$store == &quot;Sos your mom&quot; , ] %&gt;%
                                  mutate(drive_est = ifelse(date==&quot;July 27 2024&quot;, yes=20/3, no=drive_est),
